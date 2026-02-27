@@ -37,84 +37,111 @@ export default function Login() {
     }
   }
 
+  //add return here
   return (
-    <div className="login-bg min-h-screen flex items-center justify-center px-4">
+  <div className="min-h-screen flex bg-gradient-to-br from-black via-gray-900 to-black">
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+    {/* LEFT */}
+    <div className="w-full lg:w-1/2 flex items-center justify-center px-6 lg:px-20">
 
-      {/* Card */}
-      <div className="relative w-full max-w-md bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl p-8 sm:p-10 text-white animate-fadeIn">
+      <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden animate-fadeIn">
 
-        <h2 className="text-4xl font-bold text-center mb-3 bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
-          Welcome Back 🚗
-        </h2>
-
-        <p className="text-gray-300 text-center mb-8 text-sm">
-          Login to access your dashboard
-        </p>
-
-        {error && (
-          <div className="bg-red-500/20 border border-red-500 text-red-300 p-3 rounded-xl text-sm mb-6 text-center animate-pulse">
-            {error}
-          </div>
-        )}
-
-        <form onSubmit={handleLogin} className="space-y-6">
-
-          {/* Email */}
-          <div className="relative group">
-            <Mail className="absolute left-4 top-3.5 text-gray-400 group-focus-within:text-yellow-400 transition-all" size={18}/>
-            <input
-              type="email"
-              className="w-full pl-11 pr-4 py-3 rounded-2xl bg-white/10 border border-gray-600 text-white placeholder-gray-400 
-              focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/40 focus:scale-[1.02]
-              transition-all duration-300 outline-none shadow-inner"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-
-          {/* Password */}
-          <div className="relative group">
-            <Lock className="absolute left-4 top-3.5 text-gray-400 group-focus-within:text-yellow-400 transition-all" size={18}/>
-            <input
-              type="password"
-              className="w-full pl-11 pr-4 py-3 rounded-2xl bg-white/10 border border-gray-600 text-white placeholder-gray-400 
-              focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/40 focus:scale-[1.02]
-              transition-all duration-300 outline-none shadow-inner"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-
-          {/* Button */}
-          <button
-            type="submit"
-            disabled={loading}
-            className={`w-full py-3 rounded-2xl font-semibold shadow-lg transition-all duration-300
-              ${loading
-                ? "bg-gray-600 cursor-not-allowed"
-                : "bg-gradient-to-r from-yellow-400 to-orange-500 hover:scale-105 active:scale-95 hover:brightness-110 text-black"
-              }`}
-          >
-            {loading ? (
-              <span className="flex justify-center items-center gap-2">
-                <span className="animate-spin h-4 w-4 border-2 border-black border-t-transparent rounded-full"></span>
-                Logging in...
-              </span>
-            ) : "Login"}
-          </button>
-
-        </form>
-
-        <div className="text-center text-xs text-gray-400 mt-8 hover:text-gray-200 transition-all duration-300">
-          🔐 Secure Cab Booking System
+        <div className="bg-gradient-to-r from-yellow-400 to-amber-500 text-black text-center py-4 font-semibold tracking-wide">
+          CAB BOOKING SYSTEM
         </div>
 
+        <div className="p-10">
+
+          <h2 className="text-3xl font-bold text-gray-900 mb-2">
+            Welcome Back 🚗
+          </h2>
+
+          <p className="text-gray-500 mb-8 text-sm">
+            Login to access your dashboard
+          </p>
+
+          {error && (
+            <div className="bg-red-100 border border-red-400 text-red-600 p-3 rounded-xl text-sm mb-6 text-center">
+              {error}
+            </div>
+          )}
+
+          <form onSubmit={handleLogin} className="space-y-6">
+
+            <div className="relative">
+              <Mail className="absolute left-4 top-4 text-gray-400" size={18}/>
+              <input
+                type="email"
+                className="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-300 bg-gray-50
+                focus:border-yellow-500 focus:ring-2 focus:ring-yellow-400/40 outline-none transition"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+
+            <div className="relative">
+              <Lock className="absolute left-4 top-4 text-gray-400" size={18}/>
+              <input
+                type="password"
+                className="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-300 bg-gray-50
+                focus:border-yellow-500 focus:ring-2 focus:ring-yellow-400/40 outline-none transition"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={loading}
+              className={`w-full py-3 rounded-xl font-semibold transition-all duration-300
+                ${loading
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-gradient-to-r from-yellow-400 to-amber-500 text-black hover:scale-[1.03]"
+                }`}
+            >
+              {loading ? "Logging in..." : "Login"}
+            </button>
+
+          </form>
+
+          <div className="text-center text-xs text-gray-500 mt-8">
+            🔐 Secure Cab Booking System
+          </div>
+
+        </div>
       </div>
     </div>
-  )
+
+    {/* RIGHT */}
+    <div className="hidden lg:block lg:w-1/2 relative">
+
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/cab-hero.png')"
+        }}
+      ></div>
+
+      <div className="absolute inset-0 bg-black/60"></div>
+
+      <div className="relative z-10 flex items-end h-full p-20">
+        <div className="text-white max-w-lg">
+          <h3 className="text-4xl font-bold mb-6">
+            Premium Outstation & City Rides
+          </h3>
+          <p className="text-gray-300">
+            Experience safe, reliable and comfortable cab booking
+            with transparent pricing and 24/7 support.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+)
+
+
 }

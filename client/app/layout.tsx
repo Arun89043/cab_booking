@@ -2,6 +2,7 @@ export const metadata = {
   title: "Cab Booking System",
   description: "Ride Booking App",
 }
+import "./globals.css"
 
 export default function RootLayout({
   children,
